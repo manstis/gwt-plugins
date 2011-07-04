@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+
+	<inherits name='org.timepedia.exporter.Exporter' />
+
+	<inherits name='com.anstis.plugincommon.PluginCommon' />
+
+	<entry-point class='com.anstis.pluginserver.client.PluginServer' />
+	<set-property name="export" value="yes" />
+
+	<source path='client' />
+	<source path='shared' />
+
+	<add-linker name="xs" />
+
+</module>

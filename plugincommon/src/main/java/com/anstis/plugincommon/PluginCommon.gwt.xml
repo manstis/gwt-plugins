@@ -1,0 +1,13 @@
+<!DOCTYPE module PUBLIC "//gwt-module/" "http://google-web-toolkit.googlecode.com/svn/tags/1.6.2/distro-source/core/src/gwt-module.dtd">
+<module>
+
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+
+	<inherits name='org.timepedia.exporter.Exporter' />
+	<set-property name="export" value="yes" />
+
+	<source path='client' />
+	<source path='shared' />
+
+</module>

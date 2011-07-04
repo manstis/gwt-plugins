@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	
+	<inherits name='com.anstis.plugincommon.PluginCommon' />
+	
+	<entry-point class='com.anstis.plugin.client.Plugin' />
+
+	<source path='client' />
+	<source path='shared' />
+
+</module>
