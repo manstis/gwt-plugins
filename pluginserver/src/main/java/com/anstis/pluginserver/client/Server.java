@@ -9,16 +9,16 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 
 @Export
-public class CommonService implements Exportable {
+public class Server implements Exportable {
 
 	private static final EchoServiceAsync echoService = GWT
 			.create(EchoService.class);
 
 	public void echo(String input, PluginCallback<String> callback) {
-		Window.alert("CommonService.echo.input is "
+		Window.alert("Server.echo.input is "
 				+ (input != null ? "not " : "") + "null"
 				+ (input != null ? " [" + input + "]" : ""));
-		Window.alert("CommonService.echo.callback is "
+		Window.alert("Server.echo.callback is "
 				+ (callback != null ? "not " : "") + "null");
 		try {
 			echoService.echo(input, callback);
@@ -30,7 +30,7 @@ public class CommonService implements Exportable {
 	}
 
 	public void displayPerson(Person person) {
-		Window.alert("CommonService.displayPerson.person is "
+		Window.alert("Server.displayPerson.person is "
 				+ (person != null ? "not " : "") + "null");
 		Window.alert("Person=" + person + ", Name=" + person.getName()
 				+ ", age=" + person.getAge() + ", display=" + person.display());

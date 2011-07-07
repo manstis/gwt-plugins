@@ -9,6 +9,7 @@
 	<entry-point class='com.anstis.plugin.client.Plugin' />
 
 	<source path='client' />
-	<source path='shared' />
+	
+	<add-linker name="xs" />
 
 </module>

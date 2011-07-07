@@ -12,7 +12,6 @@
 	<set-property name="export" value="yes" />
 
 	<source path='client' />
-	<source path='shared' />
 
 	<add-linker name="xs" />
 

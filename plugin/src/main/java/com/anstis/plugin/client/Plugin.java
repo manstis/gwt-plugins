@@ -1,5 +1,6 @@
 package com.anstis.plugin.client;
 
+import com.anstis.plugincommon.client.ServerProxy;
 import com.anstis.plugincommon.shared.Person;
 import com.anstis.plugincommon.shared.PluginCallback;
 import com.google.gwt.core.client.EntryPoint;
@@ -36,7 +37,7 @@ public class Plugin implements EntryPoint {
 				PluginCallback<String> callback = getPluginCallback();
 				Window.alert("Plugin.onModuleLoad.echoButton.onClick.callback is "
 						+ (callback != null ? "not " : "") + "null");
-				echo(text.getText(), callback);
+				ServerProxy.echo(text.getText(), callback);
 			}
 
 		});
@@ -51,7 +52,7 @@ public class Plugin implements EntryPoint {
 						+ person
 						+ ", Plugin.onModuleLoad.personButton.onClick.person is "
 						+ (person != null ? "not " : "") + "null");
-				displayPerson(person);
+				ServerProxy.displayPerson(person);
 			}
 
 		});
@@ -69,27 +70,5 @@ public class Plugin implements EntryPoint {
 			}
 		};
 	}
-
-	private native void echo(String text, PluginCallback<String> callback) /*-{
-		alert("Plugin.echo.callback is " + (callback != null ? "not " : "") + "null");
-		try {
-			var pluginServer = new $wnd.com.anstis.pluginserver.CommonService();
-			alert("callback=" + callback +", Plugin.echo.pluginServer = " + pluginServer);
-			pluginServer.echo(text, callback);
-		} catch(err) {
-			alert(err);
-		}
-	}-*/;
-
-	private native void displayPerson(Person person) /*-{
-		alert("Plugin.displayPerson.person is " + (person != null ? "not " : "") + "null");
-		try {
-			var pluginServer = new $wnd.com.anstis.pluginserver.CommonService();
-			alert("Person=" + person + ", Plugin.displayPerson.pluginServer = " + pluginServer);
-			pluginServer.displayPerson(person);
-		} catch(err) {
-			alert(err);
-		}
-	}-*/;
 
 }
