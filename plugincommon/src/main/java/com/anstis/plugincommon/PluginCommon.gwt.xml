@@ -10,4 +10,6 @@
 	<source path='client' />
 	<source path='shared' />
 
+	<add-linker name="xs" />
+
 </module>

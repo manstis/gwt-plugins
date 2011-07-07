@@ -2,10 +2,12 @@ package com.anstis.pluginserver.client;
 
 import com.anstis.plugincommon.client.ServerProxy;
 import com.anstis.plugincommon.shared.Person;
+import com.anstis.plugincommon.shared.PluginCallback;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -17,6 +19,7 @@ public class PluginServer implements EntryPoint {
 
 		RootPanel.get("container").add(getPersonButton());
 		RootPanel.get("container").add(getProxyPersonButton());
+		RootPanel.get("container").add(getEchoButton());
 	}
 
 	private native void onLoadImpl() /*-{
@@ -39,10 +42,7 @@ public class PluginServer implements EntryPoint {
 	}
 
 	private native void displayPerson(Person person) /*-{
-		alert("PluginServer.displayPerson.person is " + (person != null ? "not " : "") + "null");
 		try {
-			var pluginServer = new $wnd.com.anstis.pluginserver.Server();
-			alert("PluginServer.displayPerson.pluginServer = " + pluginServer);
 			pluginServer.displayPerson(person);
 		} catch(err) {
 			alert(err);
@@ -57,17 +57,35 @@ public class PluginServer implements EntryPoint {
 				Person p = new Person();
 				p.setName("Michael");
 				p.setAge(38);
-				displayProxyPerson(p);
+				ServerProxy.displayPerson(p );
 			}
 
 		});
 		return btn;
 	}
 
-	private void displayProxyPerson(Person person) {
-		System.out.println("PluginServer.displayProxyPerson.person is "
-				+ (person != null ? "not " : "") + "null");
-		ServerProxy.displayPerson(person);
+	private Button getEchoButton() {
+		Button btn = new Button("Local Echo (proxy)");
+		btn.addClickHandler(new ClickHandler() {
+
+			public void onClick(ClickEvent event) {
+				ServerProxy.echo("text", new PluginCallback<String>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert(caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(String result) {
+						Window.alert(result);
+					}
+
+				});
+			}
+
+		});
+		return btn;
 	}
 
 }
