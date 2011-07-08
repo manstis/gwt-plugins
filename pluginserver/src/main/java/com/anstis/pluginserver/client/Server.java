@@ -1,22 +1,24 @@
 package com.anstis.pluginserver.client;
 
-import com.google.gwt.core.client.GWT;
+import org.timepedia.exporter.client.Export;
+import org.timepedia.exporter.client.Exportable;
+
+import com.anstis.plugincommon.shared.Command;
+import com.anstis.plugincommon.shared.Person;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
-//TODO NOT USED
-public class Server {
+public class Server implements Exportable {
 
-	private static final ServiceAsync service = GWT.create(Service.class);
-
-	public void hello(String input, AsyncCallback<String> callback) {
+	// Method that we want to use from JScript
+	@Export
+	public String executeCommand(Command c) {
 		try {
-			service.hello(input, callback);
+			Person p = c.getPerson();
+			return "Hello " + p.getName() + " aged " + p.getAge();
 		} catch (Exception e) {
-			e.fillInStackTrace();
-			e.printStackTrace(System.out);
 			Window.alert(e.getMessage());
 		}
+		return "";
 	}
 
 }

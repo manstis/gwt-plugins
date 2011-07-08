@@ -1,6 +1,5 @@
 package com.anstis.plugin.client;
 
-import com.anstis.plugincommon.client.ServerProxy;
 import com.anstis.plugincommon.shared.Command;
 import com.anstis.plugincommon.shared.Person;
 import com.google.gwt.core.client.EntryPoint;
