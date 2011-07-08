@@ -1,28 +1,35 @@
 package com.anstis.plugincommon.shared;
 
-public class Person {
+import com.google.gwt.core.client.JavaScriptObject;
 
-	private String name;
-	private int age;
+public class Person extends JavaScriptObject {
 
-	public String getName() {
-		return name;
+	protected Person() {
+		// GWT JSO compliance requirement
+	}
+		
+	// Use this factory method to create the entities
+	public static Person create(String name, int age) {
+		Person p = JavaScriptObject.createObject().cast();
+		p.setName(name);
+		p.setAge(age);
+		return p;
 	}
 
-	public void setName(String name) {
+	public final native String getName() /*-{
+		return this.name; 
+	}-*/;
+
+	public final native void setName(String name) /*-{
 		this.name = name;
-	}
+	}-*/;
 
-	public int getAge() {
-		return age;
-	}
+	public final native int getAge() /*-{
+		return this.age; 
+	}-*/;
 
-	public void setAge(int age) {
+	public final native void setAge(int age) /*-{
 		this.age = age;
-	}
-	
-	public String display() {
-		return "name="+name+", age="+age;
-	}
+	}-*/;
 
 }

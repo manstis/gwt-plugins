@@ -8,13 +8,13 @@
 
 	<!-- Servlets -->
 	<servlet>
-		<servlet-name>echo</servlet-name>
-		<servlet-class>com.anstis.pluginserver.server.EchoServiceImpl</servlet-class>
+		<servlet-name>service</servlet-name>
+		<servlet-class>com.anstis.pluginserver.server.ServiceImpl</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>echo</servlet-name>
-		<url-pattern>/com.anstis.pluginserver.Server/echo</url-pattern>
+		<servlet-name>service</servlet-name>
+		<url-pattern>/com.anstis.pluginserver.Server/service</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->
